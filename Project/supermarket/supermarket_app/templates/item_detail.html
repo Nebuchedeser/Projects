@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ item.name }}</h1>
+    <img src="{{ item.image.url }}" alt="{{ item.name }}">
+    <p>{{ item.description }}</p>
+    <p>Category: <a href="{% url 'category' item.category.id %}">{{ item.category.name }}</a></p>
+    {% if item.subcategory %}
+        <p>Sub-Category: <a href="{% url 'subcategory' item.subcategory.id %}">{{ item.subcategory.name }}</a></p>
+    {% endif %}
+{% endblock %}

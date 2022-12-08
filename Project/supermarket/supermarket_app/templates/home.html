@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Welcome to the Supermarket Catalogue</h1>
+
+    <!-- Display a search form. -->
+    <form>
+        <input type="text" placeholder="Search for items">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display a list of categories. -->
+    <h2>Categories</h2>
+    <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <!-- Display a list of items. -->
+    <h2>Items</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                <a href="{% url 'item' item.id %}">{{ item.name }}</a>
+                <p>{{ item.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

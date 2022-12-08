@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+
+    <!-- Display the user's photo. -->
+    <img src="{{ user.photo.url }}" alt="{{ user.first_name }} {{ user.last_name }}" class="img-thumbnail">
+
+    <h2>Email</h2>
+    <p>{{ user.email }}</p>
+
+    <!-- Display a link to the profile update page. -->
+    <p><a href="{% url 'profile_update' %}">Update profile</a></p>
+{% endblock %}

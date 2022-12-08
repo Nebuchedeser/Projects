@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Items</h1>
+
+    <!-- Display the search results, if any. -->
+    {% if query %}
+        <p>Search results for "{{ query }}":</p>
+    {% endif %}
+
+    <!-- Display the items. -->
+    <ul>
+        {% for item in items %}
+            <li>
+                <img src="{{ item.image.url }}" alt="{{ item.name }}">
+                <a href="{% url 'item' item.id %}">{{ item.name }}</a>
+                <p>{{ item.description }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
